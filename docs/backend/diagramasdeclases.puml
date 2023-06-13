@@ -1,0 +1,68 @@
+@startuml diagramas de clases del backend
+class Boat {
+    -_length: int
+    -_is_horizontal: bool
+    -_positions: list
+    -_sink: bool
+    -_shotted_parts: list
+
+    +length: int
+    +is_horizontal: bool
+    +positions: list
+    +sink: bool
+    +shotted_parts: list
+    +hit(position: int): bool
+    +check_if_sink(): bool
+}
+
+class Battleship {
+    +__init__(length: int, is_horizontal: bool, positions: list)
+}
+
+class Carrier {
+    +__init__(length: int, is_horizontal: bool, positions: list)
+}
+
+class Cruiser {
+    +__init__(length: int, is_horizontal: bool, positions: list)
+}
+
+class Destroyer {
+    +__init__(length: int, is_horizontal: bool, positions: list)
+}
+
+class Submarine {
+    +__init__(length: int, is_horizontal: bool, positions: list)
+}
+
+class Game {
+    -sio: Server
+    -app: WSGIApp
+    -__ready_players: int
+    -__whos_turn: str
+    -__connections: list
+    -__player1Boats: list
+    -__player2Boats: list
+    -__player1Shots: list
+    -__player2Shots: list
+    -__isGameOver: bool
+    -__winner: str
+    -__sunkedPlayer1Boats: int
+    -__sunkedPlayer2Boats: int
+    -__game_control: dict
+
+    +__init__()
+    +run()
+    +connect(sid, environ)
+    +disconnect(sid)
+    +add_boats(sid, boats, player)
+    +water_hit_sink(sid, position)
+    +ready(sid)
+}
+
+Boat <|-- Battleship
+Boat <|-- Carrier
+Boat <|-- Cruiser
+Boat <|-- Destroyer
+Boat <|-- Submarine
+@enduml

@@ -1,0 +1,25 @@
+@startuml Casos de uso del frontend 
+left to right direction
+
+actor Cliente as Jugador1
+actor Servidor
+actor Cliente as Jugador2
+
+rectangle "Battleship" as juego {
+  Jugador1 -> (Mover Barcos)
+  Jugador1 -> (Comprobar Posición)
+  Jugador1 -> (Mandar Barcos al Servidor)
+  Jugador1 -> (Dar Listo)
+  Jugador2 -> (Mover Barcos)
+  Jugador2 -> (Comprobar Posición)
+  Jugador2 -> (Mandar Barcos al Servidor)
+  Jugador2 -> (Dar Listo)
+  Servidor -> (Comprobar Listo)
+  Servidor -> (Iniciar Partida)
+  Jugador1 -> (Hacer Jugada)
+  Jugador2 -> (Hacer Jugada)
+  Servidor -> (Comprobar Jugada)
+  Servidor -> (Actualizar Tablero)
+  Servidor -> (Comprobar Ganador)
+}
+@enduml

@@ -1,0 +1,89 @@
+@startuml Diagrama de clases frontend
+interface Boat {
+  + length: number
+  + position: number[]
+  + isHorizontal: boolean
+}
+
+class PrincipalView {
+  - userGrid: Element
+  - computerGrid: Element
+  - displayGrid: Element
+  - ships: NodeListOf<Element>
+  - destroyer: Element
+  - submarine: Element
+  - cruiser: Element
+  - battleship: Element
+  - carrier: Element
+  - startButton: Element
+  - rotateButton: Element
+  - turnDisplay: Element
+  - infoDisplay: Element
+  - player1Connected: Element
+  - player2Connected: Element
+  - player1Ready: Element
+  - player2Ready: Element
+  - isHorizontal: boolean
+  - draggedShip: HTMLElement
+  - selectedShipNameWithIndex: string
+  - player1Text: Element
+  - player2Text: Element
+  + constructor()
+  + renderConnectedPlayers(connectedPlayers: string[]): void
+  + bindClickOnBoat(): void
+  + dragOver(e: DragEvent): void
+  + dragStart(): void
+  + dragDrop(isValidPlace : Function,checkIfAllBoatsArePlaced : Function): void
+  + dragEnter(e: DragEvent): void
+  + bindReadyButton(playerReady: Function, getPlayerName: Function): void
+  + renderGameInformation(information: Object): boolean
+  + renderNewReadyPlayer(): void
+  + rotateBind(): void
+  + rotate(): boolean
+  + removeReadyAndConnectedPlayer2(): void
+  + renderError(error: string): void
+  - displayBoatOnGrid(validPositions : number[],boat:string): void
+  - removeBoatFromGrid(boat:string): void
+  + createBoard(grid: Element, squares: number[]): void
+  + bindEnemyGrid(attackEnemy: Function, getPlayerName: Function): void
+  - renderHitOrMiss(information: Object, targetDivId: number, playerName: string): boolean
+  + changeWhoseGo(information): boolean
+  + renderEnemyShoot(data : Object): boolean
+}
+
+class GameService {
+  - socket: any
+  - sid: string
+  - player: string
+  - placedBoats: Boat[]
+  + constructor()
+  + validPositions(draggedShipLength: number, targetDivId: number, isHorizontal: boolean, clickedBoatId: number, selectedShipNameWithIndex: string): number[]
+  + checkIfAllBoatsArePlaced(): void
+  + playerConnected(callback: Function): void
+  + playerDisconnected(callback): Promise<string[]>
+  + shoot (position: number): Promise<Object>
+  + playerReady(): Promise<number>
+  + anotherPlayerReady(callback: Function): void
+  + getPlayerName(): string
+  + anotherPlayerShoot(callback: Function): void
+}
+
+class GameController {
+  - gameService: GameService
+  - principalView: PrincipalView
+  + constructor(gameService: GameService, principalView: PrincipalView)
+  + handlerPlayerReady(): Promise<number>
+  + handlerAllBoatsPlaced(): void
+  + handlerCheckPosition(draggedShipLength: number, targetDivId: number, isHorizontal: boolean, clickedBoatId: number, selectedShipNameWithIndex: string): number[]
+  + handlerShoot(position: number): Promise<Object>
+  + handlerGetPlayerName(): string
+  + handlerTransformIntoPromise(data: any): void
+  + handlerAnotherPlayerConnected(data: any): void
+  + handlerRemoveReadyAndStart(): void
+  + handlerAnotherPlayerShoot(data: any): void
+}
+
+GameController --> GameService
+GameController --> PrincipalView
+Boat --> GameService
+@enduml

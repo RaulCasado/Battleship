@@ -1,0 +1,20 @@
+@startuml casos de uso del backend
+left to right direction
+
+actor Jugador
+actor Servidor
+
+rectangle "Battleship" as juego {
+  Jugador -> (Mover Barcos)
+  Jugador -> (Comprobar Posición)
+  Jugador -> (Mandar Barcos al Servidor)
+  Jugador -> (Dar Listo)
+  Servidor -> (Almacenar Barcos)
+  Servidor -> (Controlar Conexiones)
+  Servidor -> (Controlar Listos)
+  Servidor -> (Crear Instancias de Barcos)
+  Jugador -> (Disparar)
+  Servidor -> (Controlar Disparos)
+}
+
+@enduml
