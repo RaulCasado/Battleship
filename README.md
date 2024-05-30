@@ -1,6 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/45dFqHPw)
-
-
 El proyecto consistirá en una réplica del popular juego hundir la flota.
 
 Las reglas son las siguientes:
@@ -67,11 +64,5 @@ Cuando se entre en la partida tendrás los barcos abajo puedes arrastrarlos y so
 El tablero de la derecha es el tablero del oponente, donde se irán marcando los disparos que se vayan haciendo. Para hacer un disparo simplemente tienes que hacer click en la casilla que quieras disparar. 
 
 Si todo ha ido bien cambiará de turno y el otro jugador podrá hacer su disparo. Si ha ido mal puede ser por distintas razones como que no sea tu turno, que ya hayas disparado a esa casilla , que no hayas puesto todos los barcos o que no todos los jugadores hayan entrado en la partida.
-
-
-## IP de la máquina virtual para entrar al juego
-http://130.61.95.203:5173/
- 
-Este enlace entrará al juego el cliente se conectará al servidor y una vez que los dos jugadores hayan puesto sus barcos y le hayan dado a ready empezará el juego.
 
 ![](./frontend/src/assets/images/pantalla_final.PNG)
